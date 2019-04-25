@@ -48,9 +48,8 @@ func (c *cache) Get(key string) (string, error) {
 	defer c.lock.RUnlock()
 	if value, ok := c.store[key]; ok {
 		return value, nil
-	} else {
-		return "", errCacheMiss
 	}
+	return "", errCacheMiss
 }
 
 func main() {
