@@ -26,7 +26,7 @@ import (
 	"github.com/chzyer/readline"
 )
 
-var errCacheMiss = errors.New("Key not found in cache")
+var errCacheMiss = errors.New("key not found in cache")
 
 type cache struct {
 	// readline is only ever going to give us strings, so...
@@ -61,7 +61,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer prompt.Close()
+	defer func() { _ = prompt.Close() }()
 
 	for {
 		line, err := prompt.Readline()
